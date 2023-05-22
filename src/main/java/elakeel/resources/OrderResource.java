@@ -14,5 +14,10 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class OrderResource {
-    @EJB
-    private OrderServiceInterface orderService;
+@EJB
+private OrderServiceInterface orderService;
+    
+@POST
+public Order createOrder(Order order) {
+return orderService.createOrder(order);
+}
