@@ -37,3 +37,10 @@ public class RunnerResource {
     @Path("/{orderId}/deliver")
     public void markOrderAsDelivered(@PathParam("orderId") Long orderId) {
         runnerService.markOrderAsDelivered(orderId);
+    }
+    @GET
+    @Path("/{runnerId}/trips")
+    public int getNumCompletedTripsByRunnerId(@PathParam("runnerId") Long runnerId) {
+        return runnerService.getNumCompletedTripsByRunnerId(runnerId);
+    }
+}
