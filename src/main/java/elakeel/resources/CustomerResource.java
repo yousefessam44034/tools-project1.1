@@ -25,3 +25,25 @@ import elakeel.services.CustomerService;
 import elakeel.services.customerserviceinterface;
 
 import java.util.List;
+
+@Path("/customers")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class CustomerResource {
+    @EJB
+    private customerserviceinterface customerService;
+
+    @POST
+    @Path("/{customerId}/orders")
+    public Order createOrder(@PathParam("customerId") Long customerId, OrderRequest orderRequest) {
+        List<OrderItem> items = orderRequest.getItems();
+        Long restaurantId = orderRequest.getRestaurantId();
+        return customerService.createOrder(customerId, restaurantId, items);
+    }
+
+    @GET
+    @Path("/{customerId}/orders")
+    public List<Order> getOrdersByCustomerId(@PathParam("customerId") Long customerId) {
+        return customerService.getOrdersByCustomerId(customerId);
+    }
+}
