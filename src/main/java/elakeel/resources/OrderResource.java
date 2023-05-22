@@ -9,3 +9,10 @@ import elakeel.services.OrderService;
 import elakeel.services.OrderServiceInterface;
 
 import java.util.List;
+
+@Path("/orders")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class OrderResource {
+    @EJB
+    private OrderServiceInterface orderService;
