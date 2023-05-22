@@ -22,3 +22,21 @@ import elakeel.ejbs.Restaurant;
 import elakeel.ejbs.RestaurantReport;
 import elakeel.services.RestaurantService;
 import elakeel.services.ResturantServiceInterface;
+@Path("/restaurants")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class RestaurantResource {
+    @EJB
+    private ResturantServiceInterface restaurantService;
+
+    @POST
+    public Restaurant createRestaurant(Restaurant restaurant) {
+        return restaurantService.createRestaurant(restaurant);
+    }
+
+    @PUT
+    @Path("/{restaurantId}")
+    public Restaurant updateRestaurant(@PathParam("restaurantId") Long restaurantId, Restaurant restaurant) {
+        restaurant.setId(restaurantId);
+        return restaurantService.updateRestaurant(restaurant);
+    }
