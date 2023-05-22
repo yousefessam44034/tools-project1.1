@@ -46,3 +46,17 @@ public class OrderItem implements Serializable {
 	public void setMeal(Meal meal) {
 		this.meal = meal;
 	}
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "meal_id")
+    private Meal meal;
+
+    
+}
