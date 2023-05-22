@@ -23,3 +23,25 @@ import elakeel.services.AuthenticationService;
 import elakeel.services.AutheticationServicesInterface;
 
 import java.util.List;
+
+@Path("/auth")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class AuthenticationResource {
+    @EJB
+    private AutheticationServicesInterface authenticationService;
+
+    @POST
+    @Path("/signup")
+    public User signUp(User user) {
+        return authenticationService.signUp(user);
+    }
+
+    @POST
+    @Path("/login")
+    public User login(LoginRequest loginRequest) {
+        String username = loginRequest.getUsername();
+        String password = loginRequest.getPassword();
+        return authenticationService.login(username, password);
+    }
+}
