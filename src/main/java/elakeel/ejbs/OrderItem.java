@@ -31,3 +31,18 @@ public class OrderItem implements Serializable {
 		this.id = id;
 	}
 
+        public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Meal getMeal() {
+		return meal;
+	}
+
+	public void setMeal(Meal meal) {
+		this.meal = meal;
+	}
