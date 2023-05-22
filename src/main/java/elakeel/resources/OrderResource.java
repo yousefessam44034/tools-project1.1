@@ -23,15 +23,15 @@ return orderService.createOrder(order);
 }
     
 @GET
-    @Path("/customer/{customerId}")
-    public List<Order> getOrdersByCustomerId(@PathParam("customerId") Long customerId) {
-        return orderService.getOrdersByCustomerId(customerId);
-    }
+@Path("/customer/{customerId}")
+public List<Order> getOrdersByCustomerId(@PathParam("customerId") Long customerId) {
+return orderService.getOrdersByCustomerId(customerId);
+}
 
-    @PUT
-    @Path("/{orderId}")
-    public void editOrder(@PathParam("orderId") Long orderId, List<OrderItem> newItems) {
-        Order order = orderService.getOrderById(orderId);
-        orderService.editOrder(order, newItems);
-    }
+@PUT
+@Path("/{orderId}")
+public void editOrder(@PathParam("orderId") Long orderId, List<OrderItem> newItems) {
+Order order = orderService.getOrderById(orderId);
+orderService.editOrder(order, newItems);
+  }
 }
