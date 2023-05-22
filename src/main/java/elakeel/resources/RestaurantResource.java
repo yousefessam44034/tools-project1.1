@@ -40,3 +40,15 @@ public class RestaurantResource {
         restaurant.setId(restaurantId);
         return restaurantService.updateRestaurant(restaurant);
     }
+    @GET
+    @Path("/{restaurantId}")
+    public Restaurant getRestaurantById(@PathParam("restaurantId") Long restaurantId) {
+        return restaurantService.getRestaurantById(restaurantId);
+    }
+
+    @GET
+    @Path("/{restaurantId}/report")
+    public RestaurantReport createRestaurantReport(@PathParam("restaurantId") Long restaurantId) {
+        return restaurantService.createRestaurantReport(restaurantId);
+    }
+}
