@@ -25,3 +25,15 @@ import elakeel.services.RunnerService;
 import elakeel.services.RunnerServiceInterface;
 
 import java.util.List;
+
+@Path("/runners")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class RunnerResource {
+    @EJB
+    private RunnerServiceInterface runnerService;
+
+    @PUT
+    @Path("/{orderId}/deliver")
+    public void markOrderAsDelivered(@PathParam("orderId") Long orderId) {
+        runnerService.markOrderAsDelivered(orderId);
